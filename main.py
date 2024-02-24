@@ -1,6 +1,5 @@
 import webbrowser
 import uvicorn
-import pyautogui
 from api import app  
 
 def run_server():

@@ -1,5 +1,4 @@
 from fastapi import FastAPI
-import pyautogui
 from fastapi.middleware.cors import CORSMiddleware
 import keyboard
 
