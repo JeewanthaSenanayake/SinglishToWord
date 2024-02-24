@@ -14,5 +14,3 @@ if __name__ == "__main__":
     html_file_path = "index.html"
     open_html_file(html_file_path)
     run_server()
-
-
