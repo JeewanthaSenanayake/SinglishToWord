@@ -12,7 +12,7 @@
 		content="Real time,unicode,singlish,converter,Easy Sinhala Unicode,phonetic,sinhala" />
 	<meta name="viewport" content="width=device-width,initial-scale=1.0" />
 	<meta name="google-site-verification" content="21zG3vqaJB1FTQ3NHLQ2tFiEAV2dVq7utIoLjR8uzmc" />
-
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://www.easysinhalaunicode.com/css/fonts.css?version=20" />
 	<link rel="shortcut icon" href="https://www.easysinhalaunicode.com/img/favicon.png" />
 	<link rel="stylesheet" href="https://www.easysinhalaunicode.com/css/jquery-ui.css" />
@@ -75,6 +75,17 @@
 
 
 	</script>
+	<style>
+		        a {
+            text-decoration: none;
+        }
+
+        /* Optional: Style the links in other ways if needed */
+        a:hover {
+            /* Style on hover, if desired */
+            text-decoration: underline;
+        }
+	</style>
 </head>
 
 <body>
@@ -84,7 +95,10 @@
 		<div class="toolBar">
 
 			<div id="specialChars">
-				<!-- <div style="float: left;height: 100%;width: 5%;" ><img style="height: 100%" alt="Easy Access : Easy Sinhala Unicode Converter" src="img/toolLabel.png" /></div> -->
+				<div style="float: left;height: 100%;width: 5%;" >
+					<a href="https://github.com/JeewanthaSenanayake" target="_blank"><i style="font-size:30px; margin: 5px;" class="fa">&#xf09b;</i></a> 
+					<a href="https://www.linkedin.com/in/jeewantha-senanayake" target="_blank"><i style="font-size:30px; margin: 5px" class="fa">&#xf08c;</i></a>
+				</div>
 				<div style="float: left;height: 100%;width: 92%;">
 					<div onclick="addChar('\\r')" id="lanSwitcher" style="margin-left: 5px;margin-top: 5px;float: left;"
 						class="actionbtn">ඍ ( \r )</div>
@@ -153,7 +167,8 @@
 					<div>
 						<div style="cursor: pointer;" onclick="showFontList()" class="selectedFont selectedFontCont">
 							<div class="selectedFontCont" id="selectedFont" font_id="0" style="float: left;">
-								<span>සිංහල</span><span class="font-name-eng"> - Unicode</span></div>
+								<span>සිංහල</span><span class="font-name-eng"> - Unicode</span>
+							</div>
 							<div class="arrow-down selectedFontCont"
 								style="float: left;margin-top: 7px;margin-left: 4px"></div>
 							<div style="clear: both;"></div>
@@ -161,11 +176,13 @@
 						<div id="fontSelector">
 							<ul>
 								<li font_size="16" font_file="iskpota.ttf" fontId="0" onclick="changedFont(this)">
-									<span>සිංහල</span><span class="font-name-eng"> - Unicode</span></li>
+									<span>සිංහල</span><span class="font-name-eng"> - Unicode</span>
+								</li>
 								<li font_size="16" font_file="FM-Abhaya-x.ttf" fontId="1" onclick="changedFont(this)">
 									<span
 										style="font-family: FM Ababld-Bold,FM Ababld-Bold_IE;font-size: 16px">සිංහල</span><span
-										class="font-name-eng"> - FM Abhaya</span></li>
+										class="font-name-eng"> - FM Abhaya</span>
+								</li>
 								<!-- <li font_size="18" font_file="FM_ARJUN.TTF" fontId="1" onclick="changedFont(this)" ><span style="font-family: FM ARJUN,FM ARJUN_IE;font-size: 16px" >isxy,</span><span class="font-name-eng" > - FM Arjun</span></li>
 									<li font_size="16" font_file="FM Gemunu.TTF" fontId="3" onclick="changedFont(this)" ><span style="font-family: FM Gemunu,FM Gemunu_IE;font-size: 16px" >isxy,</span><span class="font-name-eng" > - FM Gemunu</span></li>
 									<li font_size="18" font_file="FM Derana.ttf" fontId="4" onclick="changedFont(this)" ><span style="font-family: FM Derana,FM Derana_IE;font-size: 16px" >isxy,</span><span class="font-name-eng" > - FM Derana</span></li>
@@ -181,10 +198,11 @@
 					style="margin-left: 15px; background-color: red; color: white;" />
 			</div>
 		</div>
-		
+
 	</div>
-	<center> 
-		<h3 style="color: red; margin-top: -10px;">After clicking the 'Add Text to Doc' button, please click the place where you want to write the text</h3>
+	<center>
+		<h3 style="color: red; margin-top: -10px;">After clicking the 'Add Text to Doc' button, please click the place
+			where you want to write the text</h3>
 		<h2 id="counter" style="color: red;"></h2>
 	</center>
 	<div id="mid_row" class="mid_row">
@@ -304,9 +322,17 @@
 			<textarea style="font-family: FM ARJUN" id="singhala_era" readonly class="singhala_era"></textarea>
 			<!-- <img class="createImg noformobileinline" height="60px" src="img/createImgNew.png" title="Create Image" alt="Create Image" onclick="createImage()" style="position: relative; top: -69px;float: right;"/> -->
 		</div>
-		<div style="clear:both"></div>
+		<div style="clear:both">
+		
 	</div>
-
+	<footer style="margin-top: 10px;">
+		<center>
+			<div style="padding-bottom: 15px;" >
+				
+				<small>&copy; 2024 Jeewantha Senanayake. All Rights Reserved.</small>
+			</div>
+		</center>
+	</footer>
 </body>
 <script>
 	var seconds = 5;
@@ -314,7 +340,7 @@
 	var sinhalaText;
 	function sendData(dataToSend) {
 		// Send data to the Flask server using AJAX
-		
+
 		fetch('http://127.0.0.1:8000/write_on_doc/', {
 			method: 'POST',
 			headers: {
@@ -331,22 +357,22 @@
 			});
 	}
 	function countdown() {
-        document.getElementById('counter').innerHTML = seconds;
-        seconds--;
+		document.getElementById('counter').innerHTML = seconds;
+		seconds--;
 
-        if (seconds < 0) {
-            clearInterval(timer);
-            document.getElementById('counter').innerHTML = 'Time\'s up!';
+		if (seconds < 0) {
+			clearInterval(timer);
+			document.getElementById('counter').innerHTML = 'Time\'s up!';
 			// alert(sinhalaText);
-			sendData({"text": sinhalaText})
-        }
-    }
+			sendData({ "text": sinhalaText })
+		}
+	}
 	function AddToDoc() {
 		sinhalaText = document.getElementById('singhala_era').value;
 		// Set up the interval to update the counter every second
 		seconds = 5;
 		timer = setInterval(countdown, 1000);
-		
+
 
 	}
 </script>
